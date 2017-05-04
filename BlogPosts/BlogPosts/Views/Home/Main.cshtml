@@ -1,0 +1,35 @@
+﻿@using BlogPosts.Models;
+@using PostDatabase;
+@model MainModel
+@{
+    ViewBag.Title = "Main";
+}
+@if (User.Identity.IsAuthenticated)
+{
+
+
+}
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Date</th>
+    </tr>
+
+
+    @foreach (Post p in Model.posts)
+    {
+
+        <tr>
+            <td><img  src="@p.PictureLink" border='3' height='100' width='100'  ></td>
+            <td><a href="/home/post?postId=@p.Id">@p.Title</a></td>
+            <td>@p.Content</td>
+            <td>@p.User.Name</td>
+            <td>@p.Date</td>
+        </tr>
+
+    }
+</table>
+<a href="/Home/AddPost">Add Post</a>
